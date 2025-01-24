@@ -1,0 +1,16 @@
+{
+	"extends": "./.nuxt/tsconfig.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"strict": true,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+
+	},
+	"include": [
+		".nuxt/nuxt.d.ts",
+		"env.d.ts",
+		"**/*"
+	]
+}
