@@ -31,14 +31,20 @@
 		"beforeDevCommand": "pnpm dev",
 		"devUrl": "http://localhost:3000"
 	},
-	"productName": "Nuxtor",
+	"productName": "DdevUI",
 	"version": "1.1.1",
 	"identifier": "com.nicolaspadari.nuxtor",
-	"plugins": {},
+	"plugins": {
+		"sql": {
+			"preload": [
+				"sqlite:ddevui.db"
+			]
+		}
+	},
 	"app": {
 		"windows": [
 			{
-				"title": "Nuxtor",
+				"title": "DdevUI",
 				"width": 1366,
 				"height": 768,
 				"minWidth": 375,
@@ -49,6 +55,7 @@
 		],
 		"security": {
 			"csp": null
-		}
+		},
+		"withGlobalTauri": true
 	}
 }

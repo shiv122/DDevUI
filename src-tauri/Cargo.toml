@@ -1,23 +1,19 @@
 [package]
-name = "nuxtor"
+name = "DDevUI"
 version = "1.1.1"
-description = "Starter template for Nuxt 3 and Tauri 2"
-authors = [ "NicolaSpadari" ]
+description = "UI for DDev"
+authors = ["rootShiv"]
 license = "MIT"
-repository = "https://github.com/NicolaSpadari/nuxtor"
+repository = "https://github.com/shiv122/DDevUI"
 edition = "2021"
 
 [lib]
-name = "nuxtor_lib"
-crate-type = [
-  "staticlib",
-  "cdylib",
-  "rlib"
-]
+name = "ddev_ui"
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies.tauri-build]
 version = "2.0.3"
-features = [ ]
+features = []
 
 [dependencies]
 tauri-plugin-shell = "2.2.0"
@@ -26,11 +22,12 @@ tauri-plugin-os = "2.2.0"
 tauri-plugin-fs = "2.2.0"
 tauri-plugin-store = "2.2.0"
 serde_json = "1"
+tauri-plugin-sql = { version = "2", features = ["sqlite"] }
 
 [dependencies.tauri]
 version = "2.1.1"
-features = [ "tray-icon" ]
+features = ["tray-icon"]
 
 [dependencies.serde]
 version = "1"
-features = [ "derive" ]
+features = ["derive"]

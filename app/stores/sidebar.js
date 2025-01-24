@@ -4,7 +4,6 @@ import { Home,Blocks,Server,Layers,Settings } from 'lucide-vue-next';
 
 export const useSidebarStore = defineStore('sidebar', {
   state: () => ({
-    activeMenu: '/', // Default active menu
     menus: [
       { label: 'Home', href: '/', icon: Home, badge: null },
       { label: 'Services', href: '/services', icon: Blocks, badge: 6 },
@@ -14,9 +13,7 @@ export const useSidebarStore = defineStore('sidebar', {
     ],
   }),
   actions: {
-    setActiveMenu(menu) {
-      this.activeMenu = menu;
-    },
+   
     addMenu(menu) {
       this.menus.push(menu);
     },

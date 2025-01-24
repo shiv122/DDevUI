@@ -46,7 +46,6 @@
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuItem
                     v-for="(action, actionIndex) in actions"
                     :key="actionIndex"

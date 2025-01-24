@@ -14,7 +14,7 @@
         <nav class="grid gap-2 text-lg font-medium">
           <a href="#" class="flex items-center gap-2 text-lg font-semibold">
             <Package2 class="h-6 w-6" />
-            <span class="sr-only">Acme Inc</span>
+            <span class="sr-only">DDevUI</span>
           </a>
           <a
             href="#"

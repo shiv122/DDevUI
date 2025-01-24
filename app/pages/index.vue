@@ -2,14 +2,16 @@
   <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
     <div class="flex items-center justify-between">
       <h1 class="text-lg font-semibold md:text-2xl">Projects</h1>
-      <Button size="sm" class="h-7 gap-1">
-        <PlusCircle class="h-3.5 w-3.5" />
-        <span
-          class="sr-only whitespace-normal w-fit sm:not-sr-only sm:whitespace-nowrap"
-        >
-          Add Project
-        </span>
-      </Button>
+      <NuxtLink to="/add-project">
+        <Button size="sm" class="h-7 gap-1">
+          <PlusCircle class="h-3.5 w-3.5" />
+          <span
+            class="sr-only whitespace-normal w-fit sm:not-sr-only sm:whitespace-nowrap"
+          >
+            Add Project
+          </span>
+        </Button>
+      </NuxtLink>
     </div>
     <ProjectListCard
       :headers="headers"
@@ -21,6 +23,18 @@
 
 <script setup>
 import { ListFilter, File, PlusCircle } from "lucide-vue-next";
+import Database from "@tauri-apps/plugin-sql";
+import { invoke } from "@tauri-apps/api/core";
+
+onMounted(async () => {
+  const db = await Database.load("sqlite:ddevui.db");
+
+  const projects = await db.select("SELECT * FROM projects");
+  console.log(projects);
+  const docker = await invoke("check_docker_status");
+  console.log("docker", docker);
+});
+
 const headers = [
   { label: "img", srOnly: true },
   { label: "Name" },

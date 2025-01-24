@@ -2,10 +2,10 @@
   <div class="hidden border-r bg-muted/40 md:block">
     <div class="flex h-full max-h-screen flex-col gap-2">
       <div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-        <a href="/" class="flex items-center gap-2 font-semibold">
+        <NuxtLink to="/" class="flex items-center gap-2 font-semibold">
           <Package2 class="h-6 w-6" />
-          <span class="">Acme Inc</span>
-        </a>
+          <span class="">DDevUI</span>
+        </NuxtLink>
         <Button variant="outline" size="icon" class="ml-auto h-8 w-8">
           <Bell class="h-4 w-4" />
           <span class="sr-only">Toggle notifications</span>
@@ -13,17 +13,12 @@
       </div>
       <div class="flex-1">
         <nav class="grid items-start px-2 gap-1 text-sm font-medium lg:px-4">
-          <a
+          <NuxtLink
             v-for="menu in menus"
             :key="menu.label"
-            :href="menu.href"
-            @click="setActive(menu.href)"
-            :class="[
-              'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary hover:bg-muted',
-              menu.href === activeMenu
-                ? 'bg-muted text-primary'
-                : 'text-muted-foreground hover:text-primary',
-            ]"
+            :to="menu.href"
+            class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary hover:bg-muted text-muted-foreground"
+            exact-active-class="bg-muted text-primary"
           >
             <component :is="menu.icon" class="h-4 w-4" />
             {{ menu.label }}
@@ -33,7 +28,7 @@
             >
               {{ menu.badge }}
             </Badge>
-          </a>
+          </NuxtLink>
         </nav>
       </div>
       <!-- <div class="mt-auto p-4">
