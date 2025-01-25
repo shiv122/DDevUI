@@ -52,7 +52,7 @@ pub fn run() {
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_store::Builder::new().build())
-        .invoke_handler(tauri::generate_handler![cmd::check_docker_status])
+        .invoke_handler(tauri::generate_handler![cmd::get_system_info])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -24,15 +24,12 @@
 <script setup>
 import { ListFilter, File, PlusCircle } from "lucide-vue-next";
 import Database from "@tauri-apps/plugin-sql";
-import { invoke } from "@tauri-apps/api/core";
 
 onMounted(async () => {
   const db = await Database.load("sqlite:ddevui.db");
 
   const projects = await db.select("SELECT * FROM projects");
   console.log(projects);
-  const docker = await invoke("check_docker_status");
-  console.log("docker", docker);
 });
 
 const headers = [

@@ -31,36 +31,70 @@
           </NuxtLink>
         </nav>
       </div>
-      <!-- <div class="mt-auto p-4">
-        <Card>
-          <CardHeader class="p-2 pt-0 md:p-4">
-            <CardTitle>Upgrade to Pro</CardTitle>
-            <CardDescription>
-              Unlock all features and get unlimited access to our support team.
-            </CardDescription>
-          </CardHeader>
-          <CardContent class="p-2 pt-0 md:p-4 md:pt-0">
-            <Button size="sm" class="w-full"> Upgrade </Button>
-          </CardContent>
-        </Card>
-      </div> -->
+      <div class="mt-auto p-4">
+        <div class="grid gap-1">
+          <SystemInfoCard
+            title="Operating System"
+            :value="systemInfoStore.os"
+            :icon="Computer"
+          />
+          <SystemInfoCard
+            title="Cpu"
+            :value="systemInfoStore.architecture"
+            :icon="Cpu"
+          />
+          <SystemInfoCard
+            title="Docker"
+            :value="
+              systemInfoStore.dockerInstalled ? 'Installed' : 'Not Installed'
+            "
+            :valueClass="
+              systemInfoStore.dockerInstalled
+                ? 'text-green-300'
+                : 'text-red-300'
+            "
+            :icon="Container"
+          />
+          <SystemInfoCard
+            title="Docker"
+            :value="systemInfoStore.dockerRunning ? 'Running' : 'Not Running'"
+            :valueClass="
+              systemInfoStore.dockerRunning ? 'text-green-300' : 'text-red-300'
+            "
+            :icon="Power"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Package2, Bell } from "lucide-vue-next";
+import {
+  Package2,
+  Bell,
+  Computer,
+  Cpu,
+  Container,
+  Power,
+} from "lucide-vue-next";
 import { useSidebarStore } from "@/stores/sidebar";
+import { useSystemInfoStore } from "@/stores/systemInfoStore";
 import { computed } from "vue";
 
 const sidebarStore = useSidebarStore();
+const systemInfoStore = useSystemInfoStore();
 
 const menus = computed(() => sidebarStore.menus);
-const activeMenu = computed(() => sidebarStore.activeMenu);
 
-const setActive = (menuHref) => {
-  sidebarStore.setActiveMenu(menuHref);
-};
+onMounted(() => {
+  const fetchSystemInfoRecursive = () => {
+    console.log("fetching system info");
+    systemInfoStore.fetchSystemInfo();
+    setTimeout(fetchSystemInfoRecursive, 10000);
+  };
+  fetchSystemInfoRecursive();
+});
 </script>
 
 <style></style>
