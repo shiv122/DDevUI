@@ -31,7 +31,7 @@ defineProps({
     default: "",
   },
   icon: {
-    type: [String, Object],
+    type: [String, Object, Function],
     required: true, // Accept any valid Vue component or tag
   },
 });

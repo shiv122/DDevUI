@@ -1,9 +1,6 @@
 <script setup>
 import Sidenavbar from "~/components/layout/Sidenavbar.vue";
 import Header from "~/components/layout/Header.vue";
-definePageMeta({
-  colorMode: "dark",
-});
 </script>
 
 <template>
@@ -13,7 +10,9 @@ definePageMeta({
     <Sidenavbar />
     <div class="flex flex-col">
       <Header />
-      <slot />
+      <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        <slot />
+      </main>
     </div>
   </div>
 </template>

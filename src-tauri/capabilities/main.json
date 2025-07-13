@@ -14,7 +14,6 @@
     "core:menu:default",
     "core:tray:default",
     "shell:allow-open",
-    
     {
       "identifier": "shell:allow-execute",
       "allow": [
@@ -41,7 +40,7 @@
     "fs:allow-document-write",
     "store:default",
     "sql:default",
-    "sql:allow-execute"
-
+    "sql:allow-execute",
+    "dialog:default"
   ]
 }

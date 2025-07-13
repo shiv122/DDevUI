@@ -125,7 +125,7 @@
 </template>
 
 <script setup>
-import { Menu, Package2, CircleUser, Sun, Moon } from "lucide-vue-next";
+import { Menu, Package2, CircleUser, Sun, Moon,Home,ShoppingCart,Package,Users,LineChart,Search } from "lucide-vue-next";
 const colorMode = useColorMode();
 const toggleColorMode = () => {
   colorMode.preference = colorMode.preference === "light" ? "dark" : "light";

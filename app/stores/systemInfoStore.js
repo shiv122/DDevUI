@@ -14,7 +14,7 @@ export const useSystemInfoStore = defineStore("systemInfo", {
     // Fetch system info from Tauri and update the store
     async fetchSystemInfo() {
       try {
-        const data = JSON.parse(await invoke("get_system_info"));        
+        const data = JSON.parse(await invoke("get_system_info"));
         this.setSystemInfo(data);
       } catch (error) {
         console.error("Failed to fetch system info:", error);

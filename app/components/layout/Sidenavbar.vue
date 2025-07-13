@@ -13,19 +13,12 @@
       </div>
       <div class="flex-1">
         <nav class="grid items-start px-2 gap-1 text-sm font-medium lg:px-4">
-          <NuxtLink
-            v-for="menu in menus"
-            :key="menu.label"
-            :to="menu.href"
+          <NuxtLink v-for="menu in menus" :key="menu.label" :to="menu.href"
             class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary hover:bg-muted text-muted-foreground"
-            exact-active-class="bg-muted text-primary"
-          >
+            exact-active-class="bg-muted text-primary">
             <component :is="menu.icon" class="h-4 w-4" />
             {{ menu.label }}
-            <Badge
-              v-if="menu.badge"
-              class="ml-auto flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-            >
+            <Badge v-if="menu.badge" class="ml-auto flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
               {{ menu.badge }}
             </Badge>
           </NuxtLink>
@@ -33,36 +26,15 @@
       </div>
       <div class="mt-auto p-4">
         <div class="grid gap-1">
-          <SystemInfoCard
-            title="Operating System"
-            :value="systemInfoStore.os"
-            :icon="Computer"
-          />
-          <SystemInfoCard
-            title="Cpu"
-            :value="systemInfoStore.architecture"
-            :icon="Cpu"
-          />
-          <SystemInfoCard
-            title="Docker"
-            :value="
-              systemInfoStore.dockerInstalled ? 'Installed' : 'Not Installed'
-            "
-            :valueClass="
-              systemInfoStore.dockerInstalled
-                ? 'text-green-300'
-                : 'text-red-300'
-            "
-            :icon="Container"
-          />
-          <SystemInfoCard
-            title="Docker"
-            :value="systemInfoStore.dockerRunning ? 'Running' : 'Not Running'"
-            :valueClass="
-              systemInfoStore.dockerRunning ? 'text-green-300' : 'text-red-300'
-            "
-            :icon="Power"
-          />
+          <SystemInfoCard title="Operating System" :value="systemInfoStore.os" :icon="Computer" />
+          <SystemInfoCard title="Cpu" :value="systemInfoStore.architecture" :icon="Cpu" />
+          <SystemInfoCard title="Docker" :value="systemInfoStore.dockerInstalled ? 'Installed' : 'Not Installed'
+            " :valueClass="systemInfoStore.dockerInstalled
+              ? 'text-green-300'
+              : 'text-red-300'
+              " :icon="Container" />
+          <SystemInfoCard title="Docker" :value="systemInfoStore.dockerRunning ? 'Running' : 'Not Running'" :valueClass="systemInfoStore.dockerRunning ? 'text-green-300' : 'text-red-300'
+            " :icon="Power" />
         </div>
       </div>
     </div>
